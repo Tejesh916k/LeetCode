@@ -1,21 +1,18 @@
 class Solution:
     def maximumTripletValue(self, nums: List[int]) -> int:
-        n = len(nums)
-        max_value = 0
+        max_1=0
+        max_2=0
+        max_value=0
+        for i in range(1,len(nums)-1):
+            max_1=max(nums[0:i])
+            max_2=max(nums[i+1:len(nums)])
+            cur_1=(max_1-nums[i])*max_2
 
-        # Iterate over j (middle index)
-        for j in range(1, n - 1):
-            # Find the best nums[i] before j
-            best_i = max(nums[:j])
-            
-            # Find the best nums[k] after j
-            best_k = max(nums[j+1:])
-            
-            # Compute the triplet value
-            triplet_value = (best_i - nums[j]) * best_k
-            max_value = max(max_value, triplet_value)
-        
+            max_value=max(max_value,cur_1)
+
         return max_value
+
+
 
 
 
