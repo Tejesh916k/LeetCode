@@ -9,5 +9,9 @@ class Solution:
                 l+=1
             set_1.add(s[i])
             length=max(length,i-l+1)
+            print(l)
+            print(i)
+            print(length)
+            print()
         return length
         
