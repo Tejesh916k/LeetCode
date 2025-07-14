@@ -12,7 +12,7 @@ class Solution {
             
         }
    
-       
+      System.out.print(j+1);
       return j+1;
     }
 }
