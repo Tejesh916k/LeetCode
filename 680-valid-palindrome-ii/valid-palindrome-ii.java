@@ -12,7 +12,7 @@ class Solution {
         }
         return true;
     }
-       private boolean palin(String s,int i,int j)
+       public boolean palin(String s,int i,int j)
         {
             while(i<j)
             {
