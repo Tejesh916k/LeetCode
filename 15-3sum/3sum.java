@@ -8,11 +8,10 @@ public class Solution {
 
             int left = i + 1;
             int right = nums.length - 1;
-            int target = 0; 
 
             while (left < right) {
                 int sum = nums[left] + nums[right]+nums[i];
-                if (sum == target) {
+                if (sum == 0) {
                     res.add(Arrays.asList(nums[i], nums[left], nums[right]));
                     
                     while (left < right && nums[left] == nums[left + 1]) left++;
@@ -20,7 +19,7 @@ public class Solution {
 
                     left++;
                     right--;
-                } else if (sum < target) {
+                } else if (sum <0) {
                     left++;
                 } else {
                     right--;
