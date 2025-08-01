@@ -6,22 +6,23 @@ class Solution {
         {
             map_1.put(i,map_1.getOrDefault(i,0)+1);
         }
-        int[] res=new int[k];
-        int j=0;
-        while(j<k)
+        PriorityQueue<Map.Entry<Integer,Integer>> min_heap=
+        new PriorityQueue<>((a,b)->a.getValue()-b.getValue());
+
+        for(Map.Entry<Integer,Integer> e:map_1.entrySet())
         {
-            int i=Collections.max(map_1.values());
-            for(Map.Entry<Integer,Integer> e:map_1.entrySet())
+            min_heap.offer(e);
+            if(min_heap.size()>k)
             {
-                if(e.getValue()==i)
-                {
-                    res[j]=e.getKey();
-                    map_1.remove(res[j]);
-                    break;
-                }              
+                min_heap.poll();
             }
-            j++;
+        }
+        int[] res=new int[k];
+        for(int i=0;i<k;i++)
+        {
+            res[i]=min_heap.poll().getKey();
         }
         return res;
+        
     }
 }
