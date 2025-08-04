@@ -6,14 +6,15 @@ class Solution {
         for(int i=0;i<fruits.length;i++)
         {
             map_1.put(fruits[i],map_1.getOrDefault(fruits[i],0)+1);
-            
+            if(map_1.size()>2)
+            {
                 while(map_1.size()>2)
                 {
                     map_1.put(fruits[l],map_1.get(fruits[l])-1);
                     if(map_1.get(fruits[l])==0) map_1.remove(fruits[l]);
                     l++;
                 }
-        
+            }
             if(map_1.size()<=2)
             {
                 maxi=Math.max(maxi,i-l+1);
