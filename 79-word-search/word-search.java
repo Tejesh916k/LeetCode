@@ -1,16 +1,5 @@
-class Pair
-{
-    int a;
-    int b;
-    Pair(int _a,int _b)
-    {
-        this.a=_a;
-        this.b=_b;
-    }
-}
 class Solution {
     public boolean exist(char[][] board, String word) {
-        Set<Pair> res=new HashSet<>();
     
         for(int i=0;i<board.length;i++)
         {
@@ -18,7 +7,7 @@ class Solution {
             {
                 if(board[i][j]==word.charAt(0))
                 {
-                   if (dfs(i,j,0,word,board,res))
+                   if (dfs(i,j,0,word,board))
                    {
                      return true;
                    }
@@ -27,8 +16,7 @@ class Solution {
         }
         return false;
     }
-    public boolean dfs(int r,int c,int pos,String sb,char[][] board,
-    Set<Pair> res)
+    public boolean dfs(int r,int c,int pos,String sb,char[][] board)
     {
         int n=board.length;
         int m=board[0].length;
@@ -42,7 +30,7 @@ class Solution {
         }
         char temp=board[r][c];
         board[r][c]='-';
-        boolean find=(dfs(r+1,c,pos+1,sb,board,res) || dfs(r-1,c,pos+1,sb,board,res) || dfs(r,c+1,pos+1,sb,board,res) || dfs(r,c-1,pos+1,sb,board,res));
+        boolean find=(dfs(r+1,c,pos+1,sb,board) || dfs(r-1,c,pos+1,sb,board) || dfs(r,c+1,pos+1,sb,board) || dfs(r,c-1,pos+1,sb,board));
 
         board[r][c]=temp;
         return find;
