@@ -3,18 +3,21 @@ class Solution {
 
     public static boolean isPossible(char[][] board,int row,int col)
     {
-        for(int i = 0;i<9;i++)
+        for(int i=0;i<9;i++)
         {
-            
-            if( i != row && board[i][col] == board[row][col])return false;
+            if(i!=row && board[i][col]==board[row][col]) return false;
+            if(i!=col && board[row][i]==board[row][col]) return false;
 
-            if( i != col && board[row][i] == board[row][col])return false;
-
-            int rowPos = (3 * (row/3) + (i/3));
-            int colPos = 3*(col/3)+(i%3);
-            if((rowPos != row && colPos != col) && board[rowPos][colPos] == board[row][col])return false;
+            int row_pos= (3 * (row/3) + i/3);
+            int col_pos=(3 * (col/3) + i%3);
+            if((row_pos!=row && col_pos!=col) && board[row][col]==board[row_pos][col_pos]) return false;
+        
         }
+        
+        
         return true;
+        
+        
     }
 
     public static boolean sudoku(char[][] board)
